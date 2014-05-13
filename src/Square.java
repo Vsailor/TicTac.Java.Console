@@ -132,7 +132,15 @@ public class Square extends Form {
 
     public void winMessage(Mark mark) {
 
-        System.out.println("Player " + mark.getMark() + " is winner!");
+        if (getTypeOfGame() == '2') {
+
+                System.out.println("Game over. Computer is winner.");
+
+        } else {
+
+            System.out.println("Player " + mark.getMark() + " is winner!");
+
+        }
 
     }
 
