@@ -91,19 +91,19 @@ public class Mark extends Form {
 
                 } else {
 
-                    System.out.println("Wrong type. Please, repeat your type:");
+                    System.out.println("Wrong input. Please, repeat your input:");
                     return false;
 
                 }
             } else {
 
-                System.out.println("Wrong type. Please, repeat your type:");
+                System.out.println("Wrong input. Please, repeat your input:");
                 return false;
             }
 
         } else {
 
-            System.out.println("Wrong type. Please, repeat your type:");
+            System.out.println("Wrong input. Please, repeat your input:");
             return false;
         }
 

@@ -251,7 +251,7 @@ public class Square extends Form {
         System.out.println("*                                                             *");
         System.out.println("***************************************************************");
         System.out.println();
-        System.out.println("Choose type of game:");
+        System.out.println("Choose the type of the game:");
         System.out.println();
         System.out.println("1. Player VS Player");
         System.out.println("2. Player VS Computer");
@@ -271,7 +271,7 @@ public class Square extends Form {
                 }
             } else {
 
-                System.out.println("Wrong input. Please repeat1:");
+                System.out.println("Wrong input. Please repeat:");
 
             }
 
@@ -285,7 +285,7 @@ public class Square extends Form {
         Scanner input= new Scanner(System.in);
         System.out.println("Do you want to restart the game?[y/n] ");
         String str;
-        char ans = 'n';
+        char ans = 0;
         do {
 
             str = input.next();
@@ -300,7 +300,7 @@ public class Square extends Form {
                 }
             } else {
 
-                System.out.println("Wrong input. Please repeat1: ");
+                System.out.println("Wrong input. Please repeat: ");
 
             }
 
