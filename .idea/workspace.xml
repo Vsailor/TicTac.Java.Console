@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="de373c17-0cbe-4000-a410-4f3078295608" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Computer.java" afterPath="$PROJECT_DIR$/src/Computer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Square.java" afterPath="$PROJECT_DIR$/src/Square.java" />
-    </list>
+    <list default="true" id="de373c17-0cbe-4000-a410-4f3078295608" name="Default" comment="" />
     <ignored path="TicTac.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -70,7 +67,7 @@
       <file leaf-file-name="Computer.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Computer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="23" column="33" selection-start="639" selection-end="639" vertical-scroll-proportion="0.54545456" vertical-offset="135" max-vertical-offset="3000">
+            <state line="16" column="0" selection-start="411" selection-end="411" vertical-scroll-proportion="0.5064935" vertical-offset="45" max-vertical-offset="3000">
               <folding />
             </state>
           </provider>
@@ -389,7 +386,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="-4" width="1366" height="772" extended-state="6" />
+    <frame x="0" y="-4" width="1366" height="772" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
@@ -479,7 +476,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Computer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="33" selection-start="639" selection-end="639" vertical-scroll-proportion="0.54545456" vertical-offset="135" max-vertical-offset="3000">
+        <state line="16" column="0" selection-start="411" selection-end="411" vertical-scroll-proportion="0.5064935" vertical-offset="45" max-vertical-offset="3000">
           <folding />
         </state>
       </provider>
