@@ -283,7 +283,7 @@ public class Square extends Form {
     public boolean restart() {
 
         Scanner input= new Scanner(System.in);
-        System.out.println("Do you want to restart the game?[y/n]");
+        System.out.println("Do you want to restart the game?[y/n] ");
         String str;
         char ans = 'n';
         do {
@@ -295,12 +295,12 @@ public class Square extends Form {
                 ans = var[0];
                 if (!((var[0] == 'y' ) || (var[0] == 'n'))) {
 
-                    System.out.println("Wrong input. Please repeat:");
+                    System.out.println("Wrong input. Please repeat: ");
 
                 }
             } else {
 
-                System.out.println("Wrong input. Please repeat1:");
+                System.out.println("Wrong input. Please repeat1: ");
 
             }
 
