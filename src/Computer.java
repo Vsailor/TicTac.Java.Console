@@ -1,38 +1,17 @@
 import java.util.Random;
 
-public class Computer extends Mark {
+public class Computer extends Form implements IPlayer {
 
-    public void go(Square square) {
-        Mark computerMark = new Mark();
+    private char mark;
 
-        computerMark.setMark(MARK_O);
+    public Computer (char mark) {
 
-        if (!weWillHaveWinnerInTheNextStep(square, computerMark)) {
-
-            computerMark.setMark(MARK_X);
-
-            if (!weWillHaveWinnerInTheNextStep(square, computerMark)) {
-
-                computerMark.setMark(MARK_O);
-
-                if (canPutMarkInCenterOfTheMatrix(square)) {
-
-                    putMarkInCenterOfTheMatrix(square, computerMark);
-
-                } else if (canPutMarkInTheConner(square)) {
-
-                    putMarkInTheConnerOfTheMatrix(square, computerMark);
-
-                } else {
-
-                    putMarkInRandomPlace(square);
-
-                }
-            }
-
-        }
+        setMark(mark);
 
     }
+
+    public Computer () {}
+
 
     private void putMarkInCenterOfTheMatrix (Square square, Mark mark) {
 
@@ -41,8 +20,7 @@ public class Computer extends Mark {
 
         if (square.emptyCell(mark.getLeftCoord(), mark.getTopCoord())) {
 
-            mark.putMark();
-
+            square.putMark(mark);
 
         }
 
@@ -74,9 +52,9 @@ public class Computer extends Mark {
                 default:
             }
 
-        } while (!mark.canChooseCell());
+        } while (!square.emptyCell(mark.getLeftCoord(),mark.getTopCoord()));
 
-        mark.putMark();
+        square.putMark(mark);
 
     }
 
@@ -95,7 +73,7 @@ public class Computer extends Mark {
     }
 
 
-    private boolean canPutMarkInCenterOfTheMatrix (Square square) {
+    private boolean canPutMarkInTheCenterOfTheMatrix (Square square) {
 
         if (square.emptyCell('2', 'b')) {
 
@@ -109,24 +87,22 @@ public class Computer extends Mark {
 
     }
 
-    private void putMarkInRandomPlace (Square square) {
-
-        Mark computerMark = new Mark();
-        computerMark.setMark(MARK_O);
+    private void putMarkInTheRandomPlace (Square square, Mark mark) {
 
         Random rand = new Random(System.currentTimeMillis());
+
         do {
 
             switch (rand.nextInt(3)) {
 
                 case 0:
-                    computerMark.setLeftCoord('1');
+                    mark.setLeftCoord('1');
                     break;
                 case 1:
-                    computerMark.setLeftCoord('2');
+                    mark.setLeftCoord('2');
                     break;
                 case 2:
-                    computerMark.setLeftCoord('3');
+                    mark.setLeftCoord('3');
                     break;
                 default:
             }
@@ -134,47 +110,47 @@ public class Computer extends Mark {
             switch (rand.nextInt(3)) {
 
                 case 0:
-                    computerMark.setTopCoord('a');
+                    mark.setTopCoord('a');
                     break;
                 case 1:
-                    computerMark.setTopCoord('b');
+                    mark.setTopCoord('b');
                     break;
                 case 2:
-                    computerMark.setTopCoord('c');
+                    mark.setTopCoord('c');
                     break;
                 default:
             }
-        } while(!computerMark.canChooseCell());
+        } while (!square.emptyCell(mark.getLeftCoord(),mark.getTopCoord()));
 
-        computerMark.setMark(MARK_O);
-        computerMark.putMark();
+        square.putMark(mark);
 
     }
 
 
-    private boolean weWillHaveWinnerInTheNextStep(Square square, Mark computerMark) {
+    private boolean playerWillBeWinnerInTheNextStep (Square square, IPlayer player) {
+
+        Mark mark = new Mark(player.getMark());
 
         for (char i=FIRST_LEFT_COORD; i<FIRST_LEFT_COORD + STRINGS_MATRIX_COUNT; i++) {
 
             for (char j=FIRST_TOP_COORD; j<FIRST_TOP_COORD + STRINGS_MATRIX_COUNT; j++) {
 
-                computerMark.setLeftCoord(i);
-                computerMark.setTopCoord(j);
+                mark.setLeftCoord(i);
+                mark.setTopCoord(j);
 
-                if (computerMark.canChooseCell()) {
+                if (square.emptyCell(mark.getLeftCoord(), mark.getTopCoord())) {
 
-                    computerMark.putMark();
+                    square.putMark(mark);
 
-                    if (square.winner(computerMark)) {
+                    if (square.winner(player)) {
 
-                        square.clearCell(computerMark.getLeftCoord(), computerMark.getTopCoord());
-                        computerMark.setMark(MARK_O);
-                        computerMark.putMark();
+                        square.clearCell(mark.getLeftCoord(), mark.getTopCoord());
+
                         return true;
 
                     } else {
 
-                        square.clearCell(computerMark.getLeftCoord(), computerMark.getTopCoord());
+                        square.clearCell(mark.getLeftCoord(), mark.getTopCoord());
 
                     }
 
@@ -184,10 +160,54 @@ public class Computer extends Mark {
 
             }
         }
-        computerMark.setMark(MARK_O);
+
         return false;
 
     }
+
+
+    public void setMark(char mark) {
+
+        this.mark = new Mark(mark).getMark();
+
+    }
+
+    public char getMark() {
+
+        return mark;
+
+    };
+
+    public void go(Square square) {
+
+        if (!playerWillBeWinnerInTheNextStep(square, computerMark)) {
+
+            computerMark.setMark(MARK_X);
+
+            if (!playerWillBeWinnerInTheNextStep(square, computerMark)) {
+
+                computerMark.setMark(MARK_O);
+
+                if (canPutMarkInTheCenterOfTheMatrix(square)) {
+
+                    putMarkInCenterOfTheMatrix(square, computerMark);
+
+                } else if (canPutMarkInTheConner(square)) {
+
+                    putMarkInTheConnerOfTheMatrix(square, computerMark);
+
+                } else {
+
+                    putMarkInTheRandomPlace(square);
+
+                }
+            }
+
+        }
+
+    }
+
+
 
 
 

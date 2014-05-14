@@ -32,12 +32,12 @@ public class Main {
                     } while (!mark.cinGood(str));
 
                     mark.consoleInput(str);
-                    if (!mark.canChooseCell()) {
+                    if (!mark.canBeChoosen()) {
 
                         System.out.println("This cell isn't empty");
 
                     }
-                } while (!mark.canChooseCell());
+                } while (!mark.canBeChoosen());
 
                 mark.putMark();
 
@@ -92,7 +92,7 @@ public class Main {
 
             }
 
-            if(!square.restart()) {
+            if(!square.restartGame()) {
 
                 System.out.println("Good bye!");
                 return;

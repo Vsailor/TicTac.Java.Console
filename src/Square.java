@@ -1,9 +1,22 @@
-
 import java.util.Scanner;
 
 public class Square extends Form {
 
-    private void eraseLine(int line_number) {
+    private char typeOfGame;
+
+    public Square() {
+
+        for (int i=0; i< SIZE_OF_MATRIX; i++) {
+
+            eraseLine(i);
+
+        }
+
+        setBorder();
+
+    }
+
+    private void eraseLine (int line_number) {
 
         for (int i=0; i< SIZE_OF_MATRIX; i++){
             matrix[line_number][i] = EMPTY_CELL;
@@ -11,7 +24,7 @@ public class Square extends Form {
 
     }
 
-    private boolean playerIsWinner(Mark mark, int count) {
+    private boolean winnerScore (int count) {
 
         if (count == WINNER_SCORE) {
 
@@ -25,7 +38,45 @@ public class Square extends Form {
 
     }
 
-    private boolean checkWinInHorisontalAndVerticalLines(Mark mark) {
+    private void setBorder() {
+
+        for (int i=TOP_AND_LEFT_BORDER_SIZE-1; i< SIZE_OF_MATRIX; i+=2) {
+
+            for (int k=TOP_AND_LEFT_BORDER_SIZE-1; k< SIZE_OF_MATRIX; k++) {
+
+                matrix[i][k] = BORDER_MATERIAL;
+
+            }
+
+            for (int k=TOP_AND_LEFT_BORDER_SIZE; k< SIZE_OF_MATRIX; k++) {
+
+                matrix[k][i] = BORDER_MATERIAL;
+
+            }
+
+        }
+
+        char topCoord = FIRST_TOP_COORD;
+
+        for (int i=TOP_AND_LEFT_BORDER_SIZE; i< SIZE_OF_MATRIX; i+=2) {
+
+            matrix[0][i] = topCoord;
+            topCoord++;
+
+        }
+
+        char leftCoord = FIRST_LEFT_COORD;
+
+        for (int i=TOP_AND_LEFT_BORDER_SIZE; i< SIZE_OF_MATRIX; i+=2) {
+
+            matrix[i][0] = leftCoord;
+            leftCoord++;
+
+        }
+
+    }
+
+    private boolean checkWinInHorizontalAndVerticalLines (IPlayer player) {
 
         int leftLineCount = 0;
 
@@ -35,19 +86,19 @@ public class Square extends Form {
 
             for (int k=0; k<SIZE_OF_MATRIX; k++) {
 
-                if (matrix[i][k] == mark.getMark()) {
+                if (matrix[i][k] == player.getMark()) {
 
                     leftLineCount++;
 
                 }
 
-                if (matrix[k][i] == mark.getMark()) {
+                if (matrix[k][i] == player.getMark()) {
 
                     topLineCount++;
 
                 }
 
-                if (playerIsWinner(mark, leftLineCount) || playerIsWinner(mark, topLineCount)) {
+                if (winnerScore(leftLineCount) || winnerScore(topLineCount)) {
 
                     return true;
 
@@ -65,92 +116,13 @@ public class Square extends Form {
     }
 
 
-    public void showMatrixLine(int line_number) {
-
-        for (int i=0; i< SIZE_OF_MATRIX; i++){
-            System.out.print(matrix[line_number][i]);
-        }
-
-    }
-
-    public void eraseMatrix() {
-
-        for (int i=0; i< SIZE_OF_MATRIX; i++) {
-
-            eraseLine(i);
-
-        }
-
-    }
-
-    public void setBorder() {
-
-        for (int i=TOP_AND_LEFT_BORDER_SIZE-1; i< SIZE_OF_MATRIX; i+=2) {
-
-            for (int k=TOP_AND_LEFT_BORDER_SIZE-1; k< SIZE_OF_MATRIX; k++){
-
-                matrix[i][k] = BORDER_MATERIAL;
-
-            }
-
-            for (int k=1; k< SIZE_OF_MATRIX; k++){
-
-                matrix[k][i] = BORDER_MATERIAL;
-
-            }
-
-        }
-
-        char topCoord = FIRST_TOP_COORD;
-
-        for (int i=2; i< SIZE_OF_MATRIX; i+=2) {
-
-            matrix[0][i] = topCoord;
-            topCoord++;
-
-        }
-
-        char leftCoord = FIRST_LEFT_COORD;
-
-        for (int i=2; i< SIZE_OF_MATRIX; i+=2) {
-
-            matrix[i][0] = leftCoord;
-            leftCoord++;
-
-        }
-
-    }
-
-    public void showMatrix() {
-
-        for (int i=0; i< SIZE_OF_MATRIX; i++) {
-            showMatrixLine(i);
-            System.out.println();
-        }
-
-    }
-
-    public void winMessage(Mark mark) {
-
-        if (getTypeOfGame() == '2' && mark.getMark() == MARK_O) {
-
-                System.out.println("Game over. Computer is winner.");
-
-        } else {
-
-            System.out.println("Player " + mark.getMark() + " is winner!");
-
-        }
-
-    }
-
-    private boolean checkWinInDiagonalLines(Mark mark) {
+    private boolean checkWinInDiagonalLines (IPlayer player) {
 
         int count1 = 0;
 
         for (int i=0; i<SIZE_OF_MATRIX; i++) {
 
-            if (matrix[i][i] == mark.getMark()) {
+            if (matrix[i][i] == player.getMark()) {
 
                 count1++;
 
@@ -162,7 +134,7 @@ public class Square extends Form {
 
         for (int i=SIZE_OF_MATRIX-DOWN_AND_RIGHT_BORDER_SIZE, j=TOP_AND_LEFT_BORDER_SIZE-1; i>=TOP_AND_LEFT_BORDER_SIZE; i--, j++) {
 
-            if (matrix[i][j] == mark.getMark()) {
+            if (matrix[i][j] == player.getMark()) {
 
                 count2++;
 
@@ -182,9 +154,79 @@ public class Square extends Form {
         }
     }
 
-    public boolean winner(Mark mark) {
+    private boolean playerWillBeWinnerInTheNextStep (IPlayer player) {
 
-        if (checkWinInHorisontalAndVerticalLines(mark) || checkWinInDiagonalLines(mark)) {
+        Mark mark = new Mark(player.getMark());
+
+        for (char i=FIRST_LEFT_COORD; i<FIRST_LEFT_COORD + STRINGS_MATRIX_COUNT; i++) {
+
+            for (char j=FIRST_TOP_COORD; j<FIRST_TOP_COORD + STRINGS_MATRIX_COUNT; j++) {
+
+
+                mark.setLeftCoord(i);
+                mark.setTopCoord(j);
+
+
+                if (emptyCell(mark.getLeftCoord(), mark.getTopCoord())) {
+
+                    putMark(mark);
+
+                    if (winner(player)) {
+
+                        clearCell(mark.getLeftCoord(), mark.getTopCoord());
+
+                        return true;
+
+                    } else {
+
+                        clearCell(mark.getLeftCoord(), mark.getTopCoord());
+
+                    }
+
+
+                }
+
+
+            }
+        }
+
+        return false;
+
+    }
+
+
+    private void showMatrixLine (int line_number) {
+
+        for (int i=0; i< SIZE_OF_MATRIX; i++) {
+
+            System.out.print(matrix[line_number][i]);
+
+        }
+
+    }
+
+
+    public void showMatrix () {
+
+        for (int i=0; i< SIZE_OF_MATRIX; i++) {
+
+            showMatrixLine(i);
+            System.out.println();
+
+        }
+
+    }
+
+    public void winMessage (IPlayer player) {
+
+        System.out.print(player.playerName + "is winner!");
+
+    }
+
+
+    public boolean winner (IPlayer player) {
+
+        if (checkWinInHorizontalAndVerticalLines(player) || checkWinInDiagonalLines(player)) {
 
             return true;
 
@@ -193,9 +235,11 @@ public class Square extends Form {
             return false;
 
         }
+
     }
 
-    public boolean endWithoutWinner() {
+
+    public boolean endWithoutWinner () {
 
         for (int i=TOP_AND_LEFT_BORDER_SIZE; i<SIZE_OF_MATRIX; i++) {
 
@@ -216,13 +260,15 @@ public class Square extends Form {
 
     }
 
-    public void endWithoutWinnerMessage() {
+
+    public void endWithoutWinnerMessage () {
 
         System.out.println("Game over. Winner is absent.");
 
     }
 
-    public boolean emptyCell(char leftCoord, char topCoord) {
+
+    public boolean emptyCell (char leftCoord, char topCoord) {
 
         if (matrix[(leftCoord-FIRST_LEFT_COORD)*2+TOP_AND_LEFT_BORDER_SIZE][(topCoord-FIRST_TOP_COORD)*2+TOP_AND_LEFT_BORDER_SIZE] == EMPTY_CELL) {
 
@@ -235,6 +281,7 @@ public class Square extends Form {
         }
     }
 
+
     public void clearCell(char leftCoord, char topCoord) {
 
         matrix[(leftCoord-FIRST_LEFT_COORD)*2+TOP_AND_LEFT_BORDER_SIZE][(topCoord-FIRST_TOP_COORD)*2+TOP_AND_LEFT_BORDER_SIZE] = EMPTY_CELL;
@@ -245,7 +292,6 @@ public class Square extends Form {
         return typeOfGame;
     }
 
-    private char typeOfGame;
     public void hello() {
 
         String str;
@@ -264,22 +310,28 @@ public class Square extends Form {
         System.out.println("1. Player VS Player");
         System.out.println("2. Player VS Computer");
         System.out.println();
+
         Scanner input= new Scanner(System.in);
+
         do {
 
             str = input.next();
+
             if (str.length() == 1) {
 
                 char []var = str.toCharArray();
+
                 typeOfGame = var[0];
+
                 if (!((var[0] == '1' ) || (var[0] == '2'))) {
 
-                    System.out.println("Wrong input. Please repeat:");
+                    wrongInputMessage();
 
                 }
+
             } else {
 
-                System.out.println("Wrong input. Please repeat:");
+                wrongInputMessage();
 
             }
 
@@ -288,27 +340,32 @@ public class Square extends Form {
 
     }
 
-    public boolean restart() {
+    public boolean restartGame() {
 
         Scanner input= new Scanner(System.in);
-        System.out.println("Do you want to restart the game?[y/n] ");
+
+        System.out.println("Do you want to restartGame the game?[y/n] ");
         String str;
+
         char ans = 0;
+
         do {
 
             str = input.next();
             if (str.length() == 1) {
 
                 char []var = str.toCharArray();
+
                 ans = var[0];
+
                 if (!((var[0] == 'y' ) || (var[0] == 'n'))) {
 
-                    System.out.println("Wrong input. Please repeat: ");
+                    wrongInputMessage();
 
                 }
             } else {
 
-                System.out.println("Wrong input. Please repeat: ");
+                wrongInputMessage();
 
             }
 
@@ -320,6 +377,8 @@ public class Square extends Form {
 
         } else {
 
+            wrongInputMessage();
+
             return false;
 
         }
@@ -328,5 +387,14 @@ public class Square extends Form {
     }
 
 
+    public void putMark (Mark mark) {
+
+        if (matrix[(mark.getLeftCoord()-FIRST_LEFT_COORD)*2+TOP_AND_LEFT_BORDER_SIZE][(mark.getTopCoord()-FIRST_TOP_COORD)*2+TOP_AND_LEFT_BORDER_SIZE] == EMPTY_CELL) {
+
+            matrix[(mark.getLeftCoord()-FIRST_LEFT_COORD)*2+TOP_AND_LEFT_BORDER_SIZE][(mark.getTopCoord()-FIRST_TOP_COORD)*2+TOP_AND_LEFT_BORDER_SIZE] = mark.getMark();
+
+        }
+
+    }
 
 }

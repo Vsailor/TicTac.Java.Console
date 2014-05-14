@@ -24,5 +24,10 @@ abstract public class Form {
 
     protected static final int DOWN_AND_RIGHT_BORDER_SIZE = 1;
 
+    protected static final void wrongInputMessage () {
+
+        System.out.println("Wrong input. Please, repeat input.");
+
+    }
 
 }
