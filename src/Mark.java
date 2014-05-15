@@ -9,6 +9,13 @@ public class Mark extends Form {
 
     public Mark (char mark) {
 
+        setMark(mark);
+
+    }
+
+
+    public void setMark (char mark) {
+
         if (mark == MARK_X || mark == MARK_O) {
 
             this.mark = mark;

@@ -12,6 +12,19 @@ public class Computer extends Form implements IPlayer {
 
     public Computer () {}
 
+    private boolean canPutMarkInTheCenterOfTheMatrix (Square square) {
+
+        if (square.emptyCell('2', 'b')) {
+
+            return true;
+
+        } else {
+
+            return false;
+
+        }
+
+    }
 
     private void putMarkInCenterOfTheMatrix (Square square, Mark mark) {
 
@@ -21,6 +34,21 @@ public class Computer extends Form implements IPlayer {
         if (square.emptyCell(mark.getLeftCoord(), mark.getTopCoord())) {
 
             square.putMark(mark);
+
+        }
+
+    }
+
+
+    private boolean canPutMarkInTheConnerOfTheMatrix (Square square) {
+
+        if (square.emptyCell('1','a') || square.emptyCell('1','c') || square.emptyCell('3','a') || square.emptyCell('3','c')) {
+
+            return true;
+
+        } else {
+
+            return false;
 
         }
 
@@ -58,34 +86,7 @@ public class Computer extends Form implements IPlayer {
 
     }
 
-    private boolean canPutMarkInTheConner (Square square) {
 
-        if (square.emptyCell('1','a') || square.emptyCell('1','c') || square.emptyCell('3','a') || square.emptyCell('3','c')) {
-
-            return true;
-
-        } else {
-
-            return false;
-
-        }
-
-    }
-
-
-    private boolean canPutMarkInTheCenterOfTheMatrix (Square square) {
-
-        if (square.emptyCell('2', 'b')) {
-
-            return true;
-
-        } else {
-
-            return false;
-
-        }
-
-    }
 
     private void putMarkInTheRandomPlace (Square square, Mark mark) {
 
@@ -165,51 +166,145 @@ public class Computer extends Form implements IPlayer {
 
     }
 
+    private void blockCellThatPlayerWillNotBeWinnerInTheNextStep (Square square, Human human) {
 
-    public void setMark(char mark) {
+        Mark mark = new Mark(human.getMark());
 
-        this.mark = new Mark(mark).getMark();
+        for (char i=FIRST_LEFT_COORD; i<FIRST_LEFT_COORD + STRINGS_MATRIX_COUNT; i++) {
 
-    }
+            for (char j=FIRST_TOP_COORD; j<FIRST_TOP_COORD + STRINGS_MATRIX_COUNT; j++) {
 
-    public char getMark() {
+                mark.setLeftCoord(i);
+                mark.setTopCoord(j);
 
-        return mark;
+                if (square.emptyCell(mark.getLeftCoord(), mark.getTopCoord())) {
 
-    };
+                    square.putMark(mark);
 
-    public void go(Square square) {
+                    if (square.winner(human)) {
 
-        if (!playerWillBeWinnerInTheNextStep(square, computerMark)) {
+                        square.clearCell(mark.getLeftCoord(), mark.getTopCoord());
 
-            computerMark.setMark(MARK_X);
+                        if (human.getMark() == MARK_X) {
 
-            if (!playerWillBeWinnerInTheNextStep(square, computerMark)) {
+                            mark.setMark(MARK_O);
 
-                computerMark.setMark(MARK_O);
+                        } else {
 
-                if (canPutMarkInTheCenterOfTheMatrix(square)) {
+                            mark.setMark(MARK_X);
 
-                    putMarkInCenterOfTheMatrix(square, computerMark);
+                        }
 
-                } else if (canPutMarkInTheConner(square)) {
 
-                    putMarkInTheConnerOfTheMatrix(square, computerMark);
+                        square.putMark(mark);
 
-                } else {
+                        return;
 
-                    putMarkInTheRandomPlace(square);
+
+                    } else {
+
+                        square.clearCell(mark.getLeftCoord(), mark.getTopCoord());
+
+                    }
+
 
                 }
-            }
 
+
+            }
         }
 
     }
 
 
+    private void chooseCellToWinInTheNextStep (Square square, IPlayer player) {
+
+        Mark mark = new Mark(player.getMark());
+
+        for (char i=FIRST_LEFT_COORD; i<FIRST_LEFT_COORD + STRINGS_MATRIX_COUNT; i++) {
+
+            for (char j=FIRST_TOP_COORD; j<FIRST_TOP_COORD + STRINGS_MATRIX_COUNT; j++) {
+
+                mark.setLeftCoord(i);
+                mark.setTopCoord(j);
+
+                if (square.emptyCell(mark.getLeftCoord(), mark.getTopCoord())) {
+
+                    square.putMark(mark);
+
+                    if (!square.winner(player)) {
+
+                        square.clearCell(mark.getLeftCoord(), mark.getTopCoord());
+
+                    } else {
+
+                        return;
+
+                    }
 
 
+                }
 
+
+            }
+        }
+
+    }
+
+
+    public void setMark (char mark) {
+
+        this.mark = mark;
+
+    }
+
+    public char getMark () {
+
+        return mark;
+
+    };
+
+    public void go (Square square, Human human) {
+
+        Mark humanMark = new Mark(human.getMark());
+
+        Mark computerMark = new Mark(this.getMark());
+
+        if (playerWillBeWinnerInTheNextStep(square, this)) {
+
+            chooseCellToWinInTheNextStep(square, this);
+            return;
+
+        }
+
+        if (playerWillBeWinnerInTheNextStep(square, human)) {
+
+            blockCellThatPlayerWillNotBeWinnerInTheNextStep(square, human);
+            return;
+
+        }
+
+        computerMark.setLeftCoord('2');
+        computerMark.setTopCoord('b');
+
+        if (square.emptyCell(computerMark.getLeftCoord(), computerMark.getTopCoord())) {
+
+            square.putMark(computerMark);
+
+            return;
+
+        }
+
+        if (square.emptyCell('1', 'a') || square.emptyCell('1', 'c') || square.emptyCell('3', 'a') || square.emptyCell('3', 'c')) {
+
+            putMarkInTheConnerOfTheMatrix(square, computerMark);
+            return;
+
+        }
+
+        putMarkInTheRandomPlace(square, computerMark);
+
+
+    }
 
 }

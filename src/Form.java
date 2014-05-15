@@ -30,4 +30,10 @@ abstract public class Form {
 
     }
 
+    protected static final void notEmptyCellMessage () {
+
+        System.out.println("This cell isn't empty. Please, repeat input.");
+
+    }
+
 }
