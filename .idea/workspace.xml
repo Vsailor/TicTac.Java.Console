@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="de373c17-0cbe-4000-a410-4f3078295608" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Round.java" afterPath="$PROJECT_DIR$/src/Round.java" />
-    </list>
+    <list default="true" id="de373c17-0cbe-4000-a410-4f3078295608" name="Default" comment="" />
     <ignored path="TicTac.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -66,10 +64,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Computer.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="Computer.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Computer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="278" column="51" selection-start="6168" selection-end="6168" vertical-scroll-proportion="-1.1586716" vertical-offset="4678" max-vertical-offset="5535">
+            <state line="278" column="51" selection-start="6168" selection-end="6168" vertical-scroll-proportion="0.0" vertical-offset="4993" max-vertical-offset="5535">
               <folding>
                 <element signature="e#6008#6009#0" expanded="true" />
                 <element signature="e#6037#6038#0" expanded="true" />
@@ -81,7 +79,7 @@
       <file leaf-file-name="Human.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Human.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="22" column="11" selection-start="393" selection-end="393" vertical-scroll-proportion="0.0" vertical-offset="283" max-vertical-offset="870">
+            <state line="22" column="11" selection-start="393" selection-end="393" vertical-scroll-proportion="0.0" vertical-offset="328" max-vertical-offset="870">
               <folding />
             </state>
           </provider>
@@ -99,7 +97,7 @@
       <file leaf-file-name="Main.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="5" column="20" selection-start="126" selection-end="126" vertical-scroll-proportion="0.0" vertical-offset="1078" max-vertical-offset="2790">
+            <state line="5" column="20" selection-start="126" selection-end="126" vertical-scroll-proportion="0.0" vertical-offset="2248" max-vertical-offset="2790">
               <folding />
             </state>
           </provider>
@@ -135,10 +133,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Form.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="Form.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Form.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="22" column="60" selection-start="646" selection-end="646" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="690">
+            <state line="16" column="45" selection-start="476" selection-end="476" vertical-scroll-proportion="0.22439024" vertical-offset="148" max-vertical-offset="690">
               <folding />
             </state>
           </provider>
@@ -169,9 +167,10 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="y" value="24" />
-    <option name="width" value="1366" />
-    <option name="height" value="744" />
+    <option name="x" value="23" />
+    <option name="y" value="119" />
+    <option name="width" value="1356" />
+    <option name="height" value="686" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -421,8 +420,8 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="24" width="1366" height="744" extended-state="6" />
-    <editor active="true" />
+    <frame x="23" y="119" width="1356" height="686" extended-state="1" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -441,8 +440,8 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18960468" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.124615386" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19100295" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2618243" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3276923" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -793,6 +792,23 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Computer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="278" column="51" selection-start="6168" selection-end="6168" vertical-scroll-proportion="0.0" vertical-offset="4993" max-vertical-offset="5535">
+          <folding>
+            <element signature="e#6008#6009#0" expanded="true" />
+            <element signature="e#6037#6038#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Human.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="22" column="11" selection-start="393" selection-end="393" vertical-scroll-proportion="0.0" vertical-offset="328" max-vertical-offset="870">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/IPlayer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="10" column="46" selection-start="228" selection-end="228" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="270">
@@ -802,7 +818,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="20" selection-start="126" selection-end="126" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2790">
+        <state line="5" column="20" selection-start="126" selection-end="126" vertical-scroll-proportion="0.0" vertical-offset="2248" max-vertical-offset="2790">
           <folding />
         </state>
       </provider>
@@ -819,39 +835,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Mark.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="94" column="0" selection-start="1782" selection-end="1782" vertical-scroll-proportion="0.0" vertical-offset="1140" max-vertical-offset="1620">
+        <state line="94" column="0" selection-start="1782" selection-end="1782" vertical-scroll-proportion="0.0" vertical-offset="1078" max-vertical-offset="1620">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Square.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="83" column="50" selection-start="1491" selection-end="1491" vertical-scroll-proportion="0.0" vertical-offset="1258" max-vertical-offset="5100">
+        <state line="83" column="50" selection-start="1491" selection-end="1491" vertical-scroll-proportion="0.0" vertical-offset="4571" max-vertical-offset="5100">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Form.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="60" selection-start="646" selection-end="646" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="690">
+        <state line="16" column="45" selection-start="476" selection-end="476" vertical-scroll-proportion="0.22439024" vertical-offset="148" max-vertical-offset="690">
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Human.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="11" selection-start="393" selection-end="393" vertical-scroll-proportion="0.0" vertical-offset="390" max-vertical-offset="870">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Computer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="278" column="51" selection-start="6168" selection-end="6168" vertical-scroll-proportion="-1.1586716" vertical-offset="4678" max-vertical-offset="5535">
-          <folding>
-            <element signature="e#6008#6009#0" expanded="true" />
-            <element signature="e#6037#6038#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
