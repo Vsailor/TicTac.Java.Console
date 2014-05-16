@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="de373c17-0cbe-4000-a410-4f3078295608" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Main.java" afterPath="$PROJECT_DIR$/src/Main.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="TicTac.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -97,7 +96,7 @@
       <file leaf-file-name="Main.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="8" selection-start="392" selection-end="392" vertical-scroll-proportion="0.3130016" vertical-offset="0" max-vertical-offset="623">
+            <state line="13" column="9" selection-start="393" selection-end="393" vertical-scroll-proportion="0.3130016" vertical-offset="0" max-vertical-offset="623">
               <folding />
             </state>
           </provider>
@@ -697,7 +696,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="8" selection-start="392" selection-end="392" vertical-scroll-proportion="0.3130016" vertical-offset="0" max-vertical-offset="623">
+        <state line="13" column="9" selection-start="393" selection-end="393" vertical-scroll-proportion="0.3130016" vertical-offset="0" max-vertical-offset="623">
           <folding />
         </state>
       </provider>
