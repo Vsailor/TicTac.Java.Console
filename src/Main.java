@@ -11,5 +11,6 @@ public class Main extends Form {
         square.showMatrix();
         computer.go(square, human);
         square.showMatrix();
+        
     }
 }
