@@ -10,25 +10,6 @@ public class Round extends Form {
         return typeOfGame;
     }
 
-    private int step = 1;
-
-    private double stepInFloat = 1.0;
-
-    public boolean timeToGoX () {
-
-        if (step/2 == stepInFloat/2) {
-
-            return false;
-
-        } else {
-
-            return true;
-        }
-
-    }
-
-    public Round () {}
-
     public void registration (IPlayer player1, IPlayer player2) {
 
         Scanner input= new Scanner(System.in);
@@ -204,7 +185,7 @@ public class Round extends Form {
 
         Scanner input= new Scanner(System.in);
 
-        System.out.println("Do you want to restartGame the game?[y/n] ");
+        System.out.println("Do you want to restart the game?[y/n] ");
         String str;
 
         char ans = 0;
@@ -236,8 +217,7 @@ public class Round extends Form {
             return true;
 
         } else {
-
-            wrongInputMessage();
+            System.out.println("Good bye!");
 
             return false;
 
