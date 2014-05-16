@@ -2,8 +2,6 @@ import java.util.Scanner;
 
 public class Square extends Form {
 
-    private char typeOfGame;
-
     public Square() {
 
         for (int i=0; i< SIZE_OF_MATRIX; i++) {
@@ -73,6 +71,30 @@ public class Square extends Form {
             leftCoord++;
 
         }
+
+    }
+
+    public int countOfMarks (char mark) {
+
+        int count = 0;
+
+
+        for (int i=0; i<SIZE_OF_MATRIX; i++) {
+
+            for (int k=0; k<SIZE_OF_MATRIX; k++) {
+
+                if (matrix[i][k] == mark) {
+
+                    count++;
+
+                }
+
+
+
+            }
+        }
+
+        return count;
 
     }
 
@@ -219,7 +241,7 @@ public class Square extends Form {
 
     public void winMessage (IPlayer player) {
 
-        System.out.print(player.playerName + "is winner!");
+        System.out.print(player.getPlayerName() + " is winner!");
 
     }
 
@@ -238,6 +260,17 @@ public class Square extends Form {
 
     }
 
+    public boolean belongs (Mark mark, char leftCoord, char topCoord) {
+
+        if (matrix[(leftCoord-FIRST_LEFT_COORD)*2+TOP_AND_LEFT_BORDER_SIZE][(topCoord-FIRST_TOP_COORD)*2+TOP_AND_LEFT_BORDER_SIZE] == mark.getMark()) {
+
+            return true;
+
+        }
+        return false;
+
+
+    }
 
     public boolean endWithoutWinner () {
 
@@ -285,104 +318,6 @@ public class Square extends Form {
     public void clearCell(char leftCoord, char topCoord) {
 
         matrix[(leftCoord-FIRST_LEFT_COORD)*2+TOP_AND_LEFT_BORDER_SIZE][(topCoord-FIRST_TOP_COORD)*2+TOP_AND_LEFT_BORDER_SIZE] = EMPTY_CELL;
-
-    }
-
-    public char getTypeOfGame() {
-        return typeOfGame;
-    }
-
-    public void hello() {
-
-        String str;
-
-        System.out.println();
-        System.out.println("***************************************************************");
-        System.out.println("*                                                             *");
-        System.out.println("*                            TIC TAC                          *");
-        System.out.println("*                                                             *");
-        System.out.println("*                             ALPHA                           *");
-        System.out.println("*                                                             *");
-        System.out.println("***************************************************************");
-        System.out.println();
-        System.out.println("Choose the type of the game:");
-        System.out.println();
-        System.out.println("1. Player VS Player");
-        System.out.println("2. Player VS Computer");
-        System.out.println();
-
-        Scanner input= new Scanner(System.in);
-
-        do {
-
-            str = input.next();
-
-            if (str.length() == 1) {
-
-                char []var = str.toCharArray();
-
-                typeOfGame = var[0];
-
-                if (!((var[0] == '1' ) || (var[0] == '2'))) {
-
-                    wrongInputMessage();
-
-                }
-
-            } else {
-
-                wrongInputMessage();
-
-            }
-
-        } while(!(typeOfGame == '1' || typeOfGame == '2'));
-
-
-    }
-
-    public boolean restartGame() {
-
-        Scanner input= new Scanner(System.in);
-
-        System.out.println("Do you want to restartGame the game?[y/n] ");
-        String str;
-
-        char ans = 0;
-
-        do {
-
-            str = input.next();
-            if (str.length() == 1) {
-
-                char []var = str.toCharArray();
-
-                ans = var[0];
-
-                if (!((var[0] == 'y' ) || (var[0] == 'n'))) {
-
-                    wrongInputMessage();
-
-                }
-            } else {
-
-                wrongInputMessage();
-
-            }
-
-        } while(!(ans == 'y' || ans == 'n'));
-
-        if (ans == 'y') {
-
-            return true;
-
-        } else {
-
-            wrongInputMessage();
-
-            return false;
-
-        }
-
 
     }
 

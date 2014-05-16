@@ -2,13 +2,25 @@ import java.util.Scanner;
 
 public class Human extends Form implements IPlayer {
 
+    private String playerName = "Player";
+
+    public void setPlayerName (String playerName) {
+        this.playerName = playerName;
+    }
+
+    public String getPlayerName () {
+        return playerName;
+    }
+
     private char mark;
 
     public Human (char mark) {
 
-        setMark(mark);
+        this.mark = mark;
 
     }
+
+    public Human () {}
 
     public void setMark (char mark) {
 
@@ -16,7 +28,7 @@ public class Human extends Form implements IPlayer {
 
     };
 
-    public void go (Square square) {
+    public void go (Square square, Round round) {
 
         Mark playerMark = new Mark(mark);
         Scanner input= new Scanner(System.in);
@@ -49,8 +61,5 @@ public class Human extends Form implements IPlayer {
 
     };
 
-
-
-    public String playerName = "N/A";
 
 }

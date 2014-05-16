@@ -4,6 +4,16 @@ public class Computer extends Form implements IPlayer {
 
     private char mark;
 
+    private String playerName = "Computer";
+
+    public void setPlayerName (String playerName) {
+        this.playerName = playerName;
+    }
+
+    public String getPlayerName () {
+        return playerName;
+    }
+
     public Computer (char mark) {
 
         setMark(mark);
@@ -264,11 +274,62 @@ public class Computer extends Form implements IPlayer {
 
     };
 
-    public void go (Square square, Human human) {
+    private boolean cleverRandom (Square square, Human human, Mark mark) {
 
         Mark humanMark = new Mark(human.getMark());
+        if (square.belongs(humanMark, '2', 'a') && square.belongs(humanMark, '1', 'b')) {
+            mark.setLeftCoord('1');
+            mark.setTopCoord('a');
+            square.putMark(mark);
+            return true;
 
+        }
+
+        if (square.belongs(humanMark, '1', 'b') && square.belongs(humanMark, '2', 'c')) {
+            mark.setLeftCoord('1');
+            mark.setTopCoord('c');
+            square.putMark(mark);
+            return true;
+
+        }
+
+        if (square.belongs(humanMark, '3', 'b') && square.belongs(humanMark, '2', 'c')) {
+            mark.setLeftCoord('3');
+            mark.setTopCoord('c');
+            square.putMark(mark);
+            return true;
+
+        }
+
+        if (square.belongs(humanMark, '3', 'b') && square.belongs(humanMark, '2', 'a')) {
+            mark.setLeftCoord('3');
+            mark.setTopCoord('a');
+            square.putMark(mark);
+            return true;
+
+        }
+
+        return false;
+    }
+
+    public void go (Square square, Round round) {
+
+        Mark humanMark;
         Mark computerMark = new Mark(this.getMark());
+        Human fakeHuman;
+
+        if (round.start == 1) {
+
+            fakeHuman = new Human(MARK_X);
+            humanMark = new Mark(MARK_X);
+
+
+        } else {
+
+            fakeHuman = new Human(MARK_O);
+            humanMark = new Mark(MARK_O);
+
+        }
 
         if (playerWillBeWinnerInTheNextStep(square, this)) {
 
@@ -277,9 +338,9 @@ public class Computer extends Form implements IPlayer {
 
         }
 
-        if (playerWillBeWinnerInTheNextStep(square, human)) {
+        if (playerWillBeWinnerInTheNextStep(square, fakeHuman)) {
 
-            blockCellThatPlayerWillNotBeWinnerInTheNextStep(square, human);
+            blockCellThatPlayerWillNotBeWinnerInTheNextStep(square, fakeHuman);
             return;
 
         }
@@ -295,16 +356,17 @@ public class Computer extends Form implements IPlayer {
 
         }
 
-        if (square.emptyCell('1', 'a') || square.emptyCell('1', 'c') || square.emptyCell('3', 'a') || square.emptyCell('3', 'c')) {
+        if (!cleverRandom(square, fakeHuman, computerMark)) {
 
-            putMarkInTheConnerOfTheMatrix(square, computerMark);
-            return;
+            if (square.emptyCell('1', 'a') || square.emptyCell('1', 'c') || square.emptyCell('3', 'a') || square.emptyCell('3', 'c')) {
+
+                putMarkInTheConnerOfTheMatrix(square, computerMark);
+                return;
+
+            }
+            putMarkInTheRandomPlace(square, computerMark);
 
         }
-
-        putMarkInTheRandomPlace(square, computerMark);
-
-
     }
 
 }
