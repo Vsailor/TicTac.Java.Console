@@ -316,20 +316,33 @@ public class Computer extends Form implements IPlayer {
 
         Mark humanMark;
         Mark computerMark = new Mark(this.getMark());
+
         Human fakeHuman;
 
         if (round.start == 1) {
+            if (this.getMark() == MARK_X) {
+                fakeHuman = new Human(MARK_O);
+                humanMark = new Mark(MARK_O);
+            } else {
 
-            fakeHuman = new Human(MARK_X);
-            humanMark = new Mark(MARK_X);
+                fakeHuman = new Human(MARK_X);
+                humanMark = new Mark(MARK_X);
+            }
+
 
 
         } else {
+            if (this.getMark() == MARK_O) {
+                fakeHuman = new Human(MARK_X);
+                humanMark = new Mark(MARK_X);
+            } else {
 
-            fakeHuman = new Human(MARK_O);
-            humanMark = new Mark(MARK_O);
+                fakeHuman = new Human(MARK_O);
+                humanMark = new Mark(MARK_O);
+            }
 
         }
+
 
         if (playerWillBeWinnerInTheNextStep(square, this)) {
 
@@ -364,9 +377,10 @@ public class Computer extends Form implements IPlayer {
                 return;
 
             }
-            putMarkInTheRandomPlace(square, computerMark);
+
 
         }
+        putMarkInTheRandomPlace(square, computerMark);
     }
 
 }

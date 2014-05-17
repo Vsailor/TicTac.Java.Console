@@ -52,6 +52,7 @@ public class Main extends Form {
 
                     }
                     round.start = 2;
+
                 } else {
                     player2.go(square, round);
                     square.showMatrix();
