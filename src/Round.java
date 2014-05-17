@@ -45,7 +45,7 @@ public class Round extends Form {
 
         Scanner input= new Scanner(System.in);
         String str;
-        System.out.println("Who will playing by X?");
+        System.out.println("Who will be playing X?");
         System.out.println();
 
         if (player1.getPlayerName() == COMPUTER_NAME || player2.getPlayerName() == COMPUTER_NAME) {
